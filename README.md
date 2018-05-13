@@ -1,5 +1,5 @@
 # SocialStock
-[WORKING IN PROGRESS]
+[WORK IN PROGRESS]
 
 Multy Agent System program in JADE: how a social network can influence the stock market.
 
