@@ -8,7 +8,7 @@
 
 ## Overview
 
-SocialStock is a Multi Agent System program written in JADE (Java).  
+SocialStock is a Multi-Agent System program written in JADE (Java).  
 
 
 ## Run
