@@ -6,7 +6,9 @@ import jade.domain.FIPAAgentManagement.ServiceDescription;
 import jade.domain.FIPAException;
 import jade.lang.acl.ACLMessage;
 
+import java.io.FileWriter;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -15,20 +17,25 @@ import java.util.Collections;
 
 public class User extends Agent{
 
+    // FIle.csv creation
+    public static FileWriter data = null;
+    public static  String title;
+    public static int days;
+
     public static int companies;
     public static int opinionRange;
     public static int userNumber;
     public static int userCounter = 0;
     public static int userCounter1 = 0;
+    public static int userCounterD = 0;
     public static int[] inclDistr = {0,0,0};
-
-
-
-    ArrayList<Integer>  opinionVector = new ArrayList<Integer>();
-    private int degree;
-    public ArrayList<AID> callOut = new ArrayList<AID>();
-
     public static ArrayList<ArrayList<Double>> opinionMatrix = new ArrayList<ArrayList<Double>>();
+
+
+    public int uDays = 1;
+    ArrayList<Integer>  opinionVector = new ArrayList<Integer>();
+    public int degree;
+    public ArrayList<AID> callOut = new ArrayList<AID>();
 
     public ArrayList<Integer> getOpinionVector() {
         return opinionVector;
@@ -51,6 +58,7 @@ public class User extends Agent{
 
 
     protected void setup(){
+        configure();
         addBehaviour(new StepsBehaviour(this));
     }
 
@@ -84,15 +92,21 @@ public class User extends Agent{
     protected int getInclination() {
         ArrayList<Integer> vec = getOpinionVector();
         double result=0.;
+
+        double var = (double)(Math.pow(opinionRange, 2) - 1)/(12*companies);
+        double mu  = (double)(opinionRange-1)/2;
+        double q1 = (double)(mu + var*(-0.4399132));
+        double q2 = opinionRange-1-q1;
+
         for(int i = 0; i< User.companies; i++) {
             result +=  vec.get(i);
         }
         result = (double) result/User.companies;
 
-        if(result<= (double) User.opinionRange/3){
+        if(result<= q1){
             return -1;
         }
-        else if(result<= (double) 2* User.opinionRange/3){
+        else if(result<= q2){
             return 0;
         }
         else {
@@ -162,14 +176,14 @@ public class User extends Agent{
         resultAID.remove(resultAID.indexOf(this.getAID()));
         Collections.shuffle(resultAID);
 
-        System.out.println(getAID().getLocalName() + "\n" + "\t"
+        /*System.out.println(getAID().getLocalName() + "\n" + "\t"
                 + " Deg= " + getDegree()
                 + " Incl= " + getInclination() + "\n" + "\t"
-                + " oVec= " + getOpinionVector());
+                + " oVec= " + getOpinionVector());*/
 
 
         if(this.getDegree()>=resultAID.size()){
-            System.out.println(getAID().getLocalName() +" ResultAID size is:" + resultAID.size());
+            //System.out.println(getAID().getLocalName() +" ResultAID size is:" + resultAID.size());
             return resultAID;
         }
 
@@ -177,7 +191,7 @@ public class User extends Agent{
         for(int i = 0; i < this.getDegree(); i++) {
             resultAID2.add(resultAID.get(i));
         }
-        System.out.println(getAID().getLocalName() +" ResultAID2 size is:" + resultAID2.size());
+        //System.out.println(getAID().getLocalName() +" ResultAID2 size is:" + resultAID2.size());
         return resultAID2;
     }
 
@@ -247,6 +261,27 @@ public class User extends Agent{
        opinionMatrix.set(index,row);
     }
 
+
+    protected void writeLine(){
+        try{
+            data = new FileWriter(title, true);
+
+            PrintWriter out = new PrintWriter(data);
+
+            out.print("uDays " + uDays + "\n inclDistr " + Arrays.toString(User.inclDistr));
+            out.print("\n");
+            out.print(opinionMatrix);
+            out.print("\n");
+
+
+            out.flush();
+            out.close();
+            data.close();
+
+
+        }catch(IOException e){e.printStackTrace();}
+
+    }
 
 
 

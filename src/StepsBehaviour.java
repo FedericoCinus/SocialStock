@@ -1,5 +1,7 @@
 import jade.core.Agent;
 import jade.core.behaviours.Behaviour;
+import jade.domain.DFService;
+import jade.domain.FIPAException;
 
 import java.util.Arrays;
 
@@ -12,49 +14,70 @@ public class StepsBehaviour extends Behaviour {
     public void action(){
         switch (step){
             case 0:
-                a.configure();
                 a.saveOpinion();
+                //System.out.println("I'm " + a.getAID().getLocalName() + " my day is : " + a.uDays);
+                //System.out.println("case0 step is  " + step );
                 step++;
                 break;
             case 1:
                 a.register();
-
                 int p = User.inclDistr[a.getInclination()+1];
                 User.inclDistr[a.getInclination()+1] = p+1;
-
-                System.out.println("UserCounter:" + User.userCounter);
                 User.userCounter++;
+                if(User.userCounter == User.userNumber-1) {
+                    User.userCounterD = 0;
+                }
+                //System.out.println("case1 step is  " + step );
                 step++;
                 break;
             case 2:
                 if(User.userCounter == User.userNumber){
-                    /*System.out.println(a.getAID().getLocalName() + "\n" + "\t"
-                            + " Deg= " + a.getDegree()
-                            + " Incl= " + a.getInclination() + "\n" + "\t"
-                            + " oVec= " + a.getOpinionVector());*/
                     a.setCallOut(a.makeCallOut());
+                    //System.out.println("case2 step is  " + step );
                     step++;
                 }
                 break;
             case 3:
-                System.out.print("Inclination Distribution: " );
-                System.out.println(Arrays.toString(User.inclDistr));
-                /*if(a.getAID().getLocalName() == "User" + (User.userNumber -1)){
-
-                }*/
-                //User.userCounter++;
+                //System.out.print("Inclination Distribution: " );
                 step++;
                 break;
             case 4:
                 a.sendMsg();
                 User.userCounter1++;
+                //System.out.println("case4 step is  " + step );
                 step++;
                 break;
             case 5:
                 if(User.userCounter1 == User.userNumber){
-                    System.out.println(a.getAID().getLocalName() + " verified condition");
                     a.addBehaviour(new Receive(a));
+                    try{
+                        DFService.deregister(a);
+                    }catch(FIPAException fe){fe.printStackTrace();}
+                    if(User.userCounterD == User.userNumber-1){
+                        System.out.println(Arrays.toString(User.inclDistr));
+                        //File.csv filling
+                        a.writeLine();
+
+                        User.userCounter = 0;
+                        User.userCounter1 = 0;
+                        for(int i=0; i<3; i++)User.inclDistr[i] = 0;
+                    }
+                    User.userCounterD++;
+                    a.uDays++;
+                    //System.out.println("case5 step is  " + step );
                     step++;
+                }
+                break;
+            case 6:
+                if(User.userCounterD == User.userNumber){
+                    if(a.uDays==User.days){
+                        System.out.println(a.getAID().getLocalName() + " Last day");
+                        //System.out.println("case6 step is  " + step );
+                        step++;
+                    }
+                    else{
+                        step=0;
+                    }
                 }
                 break;
 
@@ -66,6 +89,6 @@ public class StepsBehaviour extends Behaviour {
     }*/
 
     public boolean done() {
-        return step == 6;
+        return step == 7;
     }
 }

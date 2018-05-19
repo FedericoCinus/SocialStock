@@ -6,6 +6,8 @@ import jade.wrapper.StaleProxyException;
 
 import java.util.ArrayList;
 
+
+
 public class MainSocial {
     public static void main(String[] args) {
         jade.core.Runtime runtime = jade.core.Runtime.instance();
@@ -14,10 +16,14 @@ public class MainSocial {
         p.setParameter(Profile.GUI , "false");
         ContainerController cc = runtime.createMainContainer(p);
 
-
-        User.companies = 5;
+        User.days = 15;
+        User.companies = 10;
         User.opinionRange = 10;
-        User.userNumber = 20;
+        User.userNumber = 70;
+
+        User.title =  "c" + User.companies + "r" + User.opinionRange + "n" + User.userNumber + ".txt";
+
+
 
         for(int i=0 ; i<User.userNumber ; i++ ) {
             User.opinionMatrix.add(new ArrayList<Double>());
@@ -39,7 +45,9 @@ public class MainSocial {
         catch (StaleProxyException e) {
             e.printStackTrace();
         }
-        System.out.println("OPINION MATRIX IS:");
-        System.out.println(User.opinionMatrix);
+
+
+        //System.out.println("OPINION MATRIX IS:");
+        //System.out.println(User.opinionMatrix);
     }
 }

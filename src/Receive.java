@@ -34,19 +34,19 @@ public class Receive extends CyclicBehaviour{
             }
             catch (UnreadableException e) {e.printStackTrace();}
 
-            System.out.println(a.getAID().getLocalName() +
+            /*System.out.println(a.getAID().getLocalName() +
                     " sender: " + sender.getLocalName() + " senderOV: " + senderOV +
-            "senderDeg " + senderDeg);
+            "senderDeg " + senderDeg);*/
 
             int index = a.compareVectors(a.getOpinionVector() , senderOV);
 
             double prob =  (double) senderDeg /(a.getDegree() + senderDeg);
 
             if(index != -1 && Math.random() <= prob ){
-                System.out.println(a.getAID().getLocalName() + " i'm changing OP");
+                //System.out.println(a.getAID().getLocalName() + " i'm changing OP");
                 a.adjustVector(index , senderOV);
             }else{
-                System.out.println(a.getAID().getLocalName() + "i'm NOT changing OP");
+                //System.out.println(a.getAID().getLocalName() + "i'm NOT changing OP");
             }
 
 
