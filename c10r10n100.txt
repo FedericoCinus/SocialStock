@@ -1,0 +1,2 @@
+uDays 1
+ inclDistr [39, 25, 36]

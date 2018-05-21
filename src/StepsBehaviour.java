@@ -54,9 +54,11 @@ public class StepsBehaviour extends Behaviour {
                         DFService.deregister(a);
                     }catch(FIPAException fe){fe.printStackTrace();}
                     if(User.userCounterD == User.userNumber-1){
+                        System.out.println(a.getAID().getLocalName() + " is the one");
                         System.out.println(Arrays.toString(User.inclDistr));
+
                         //File.csv filling
-                        a.writeLine();
+                        //a.writeLines();
 
                         User.userCounter = 0;
                         User.userCounter1 = 0;

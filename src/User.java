@@ -255,14 +255,14 @@ public class User extends Agent{
    protected void saveOpinion(){
        ArrayList<Double> row = new ArrayList<Double>();
        for(int i=0 ; i<companies ; i++) {
-           row.add(opinionVector.get(i) - (double) opinionRange/2);
+           row.add(opinionVector.get(i) - (double) (opinionRange-1)/2);
        }
-       int index= Integer.parseInt(getAID().getLocalName().substring(4));
+       int index = Integer.parseInt(getAID().getLocalName().substring(4));
        opinionMatrix.set(index,row);
     }
 
 
-    protected void writeLine(){
+    protected void writeLines(){
         try{
             data = new FileWriter(title, true);
 
@@ -270,15 +270,20 @@ public class User extends Agent{
 
             out.print("uDays " + uDays + "\n inclDistr " + Arrays.toString(User.inclDistr));
             out.print("\n");
-            out.print(opinionMatrix);
-            out.print("\n");
 
+            for(int i=1; i<=userNumber; i++){
+                ArrayList<Double> row = opinionMatrix.get(i);
+                if(i!=0){out.print("\n");}
+                for(int j=1; j<=companies; j++){
+                    out.print( row.get(j) );
+                    out.print(", ");
+                }
+            }
+            out.print("\n");
 
             out.flush();
             out.close();
             data.close();
-
-
         }catch(IOException e){e.printStackTrace();}
 
     }

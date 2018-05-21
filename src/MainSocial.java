@@ -19,7 +19,7 @@ public class MainSocial {
         User.days = 15;
         User.companies = 10;
         User.opinionRange = 10;
-        User.userNumber = 70;
+        User.userNumber = 100;
 
         User.title =  "c" + User.companies + "r" + User.opinionRange + "n" + User.userNumber + ".txt";
 

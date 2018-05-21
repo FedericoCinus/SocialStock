@@ -2,12 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2f556edd-1786-4500-baa0-8dc08f838c75" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/SocialStock2/Receive.class" afterPath="$PROJECT_DIR$/out/production/SocialStock2/Receive.class" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/c10r10n70.txt" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/SocialStock2/MainSocial.class" afterPath="$PROJECT_DIR$/out/production/SocialStock2/MainSocial.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/SocialStock2/StepsBehaviour.class" afterPath="$PROJECT_DIR$/out/production/SocialStock2/StepsBehaviour.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/SocialStock2/User.class" afterPath="$PROJECT_DIR$/out/production/SocialStock2/User.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/MainSocial.java" afterPath="$PROJECT_DIR$/src/MainSocial.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Receive.java" afterPath="$PROJECT_DIR$/src/Receive.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/StepsBehaviour.java" afterPath="$PROJECT_DIR$/src/StepsBehaviour.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/User.java" afterPath="$PROJECT_DIR$/src/User.java" />
     </list>
@@ -28,8 +28,8 @@
       <file leaf-file-name="MainSocial.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/MainSocial.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="302">
-              <caret line="23" column="100" lean-forward="false" selection-start-line="23" selection-start-column="100" selection-end-line="23" selection-end-column="100" />
+            <state relative-caret-position="183">
+              <caret line="21" column="29" lean-forward="false" selection-start-line="21" selection-start-column="29" selection-end-line="21" selection-end-column="29" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -40,8 +40,8 @@
       <file leaf-file-name="User.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/User.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="373">
-              <caret line="270" column="44" lean-forward="false" selection-start-line="270" selection-start-column="44" selection-end-line="270" selection-end-column="44" />
+            <state relative-caret-position="430">
+              <caret line="277" column="42" lean-forward="true" selection-start-line="277" selection-start-column="42" selection-end-line="277" selection-end-column="42" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -52,8 +52,8 @@
       <file leaf-file-name="StepsBehaviour.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/StepsBehaviour.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="327">
-              <caret line="62" column="61" lean-forward="true" selection-start-line="62" selection-start-column="61" selection-end-line="62" selection-end-column="61" />
+            <state relative-caret-position="390">
+              <caret line="60" column="26" lean-forward="false" selection-start-line="60" selection-start-column="26" selection-end-line="60" selection-end-column="26" />
               <folding />
             </state>
           </provider>
@@ -62,7 +62,7 @@
       <file leaf-file-name="Receive.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Receive.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="600">
+            <state relative-caret-position="505">
               <caret line="48" column="18" lean-forward="false" selection-start-line="48" selection-start-column="18" selection-end-line="48" selection-end-column="18" />
               <folding />
             </state>
@@ -93,8 +93,9 @@
       <find>opinionVector</find>
       <find>inclina</find>
       <find>System.out.println(this.opinionVector);</find>
-      <find>userCou</find>
       <find>sy</find>
+      <find>userCou</find>
+      <find>sle</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -111,8 +112,8 @@
         <option value="$PROJECT_DIR$/src/Server.java" />
         <option value="$PROJECT_DIR$/src/Receive.java" />
         <option value="$PROJECT_DIR$/src/User.java" />
-        <option value="$PROJECT_DIR$/src/MainSocial.java" />
         <option value="$PROJECT_DIR$/src/StepsBehaviour.java" />
+        <option value="$PROJECT_DIR$/src/MainSocial.java" />
       </list>
     </option>
   </component>
@@ -399,13 +400,13 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="22" width="1440" height="878" extended-state="0" />
+    <frame x="0" y="22" width="1440" height="878" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Nl-Palette" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32942554" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32880098" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -692,7 +693,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Receive.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="600">
+        <state relative-caret-position="505">
           <caret line="48" column="18" lean-forward="false" selection-start-line="48" selection-start-column="18" selection-end-line="48" selection-end-column="18" />
           <folding />
         </state>
@@ -700,8 +701,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/User.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="373">
-          <caret line="270" column="44" lean-forward="false" selection-start-line="270" selection-start-column="44" selection-end-line="270" selection-end-column="44" />
+        <state relative-caret-position="430">
+          <caret line="277" column="42" lean-forward="true" selection-start-line="277" selection-start-column="42" selection-end-line="277" selection-end-column="42" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -710,8 +711,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/MainSocial.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="302">
-          <caret line="23" column="100" lean-forward="false" selection-start-line="23" selection-start-column="100" selection-end-line="23" selection-end-column="100" />
+        <state relative-caret-position="183">
+          <caret line="21" column="29" lean-forward="false" selection-start-line="21" selection-start-column="29" selection-end-line="21" selection-end-column="29" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -720,8 +721,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/StepsBehaviour.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="327">
-          <caret line="62" column="61" lean-forward="true" selection-start-line="62" selection-start-column="61" selection-end-line="62" selection-end-column="61" />
+        <state relative-caret-position="390">
+          <caret line="60" column="26" lean-forward="false" selection-start-line="60" selection-start-column="26" selection-end-line="60" selection-end-column="26" />
           <folding />
         </state>
       </provider>
