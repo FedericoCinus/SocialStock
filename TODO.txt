@@ -1,3 +1,4 @@
 1. Controllare le probabilità teoriche nelle variabili dell'inclination vector
 2. ~Sostituire i counter
 3. ~Cambiare la probabilità di influenza (quadrato, cubo del degree normalizzato)
+4. check della registrazione e servizi perché makecallout a volte non trova l'agente corrente
