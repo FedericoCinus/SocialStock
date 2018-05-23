@@ -3,8 +3,6 @@ import jade.core.behaviours.Behaviour;
 import jade.domain.DFService;
 import jade.domain.FIPAException;
 
-import java.util.Arrays;
-
 public class StepsBehaviour extends Behaviour {
     private int step = 0;
     public StepsBehaviour(Agent a) {
@@ -54,11 +52,11 @@ public class StepsBehaviour extends Behaviour {
                         DFService.deregister(a);
                     }catch(FIPAException fe){fe.printStackTrace();}
                     if(User.userCounterD == User.userNumber-1){
-                        System.out.println(a.getAID().getLocalName() + " is the one");
-                        System.out.println(Arrays.toString(User.inclDistr));
+                        //System.out.println(a.getAID().getLocalName() + " is the one");
+                        System.out.println("day : "+ a.uDays );
 
                         //File.csv filling
-                        //a.writeLines();
+                        a.writeLines();
 
                         User.userCounter = 0;
                         User.userCounter1 = 0;
@@ -72,8 +70,8 @@ public class StepsBehaviour extends Behaviour {
                 break;
             case 6:
                 if(User.userCounterD == User.userNumber){
-                    if(a.uDays==User.days){
-                        System.out.println(a.getAID().getLocalName() + " Last day");
+                    if(a.uDays==User.days+1){
+                        //System.out.println(a.getAID().getLocalName() + " Last day");
                         //System.out.println("case6 step is  " + step );
                         step++;
                     }

@@ -19,7 +19,10 @@ public class User extends Agent{
 
     // FIle.csv creation
     public static FileWriter data = null;
+    public static FileWriter dataInc = null;
+
     public static  String title;
+    public static String titleInc;
     public static int days;
 
     public static int companies;
@@ -75,10 +78,10 @@ public class User extends Agent{
         //defining the degree of each User as the total number of User times random value [0,1]
         this.degree = (int) (Math.random() * userNumber);
 
-        /*System.out.println(getAID().getLocalName() + " :mi opinion vector is");
+        System.out.println(getAID().getLocalName() + " :my opinion vector is");
         System.out.println(this.opinionVector);
-        System.out.println(getAID().getLocalName() + " :mi degree is");
-        System.out.println(this.degree);*/
+        System.out.println(getAID().getLocalName() + " :my degree is");
+        System.out.println(this.degree);
     }
 
     protected int getFavoriteCompany(){
@@ -252,43 +255,60 @@ public class User extends Agent{
     }
 
 
-   protected void saveOpinion(){
-       ArrayList<Double> row = new ArrayList<Double>();
-       for(int i=0 ; i<companies ; i++) {
-           row.add(opinionVector.get(i) - (double) (opinionRange-1)/2);
-       }
-       int index = Integer.parseInt(getAID().getLocalName().substring(4));
-       opinionMatrix.set(index,row);
+    protected void saveOpinion(){
+        ArrayList<Double> row = new ArrayList<Double>();
+        for(int i=0 ; i<companies ; i++) {
+            row.add(opinionVector.get(i) - (double) (opinionRange-1)/2);
+        }
+        int index = Integer.parseInt(getAID().getLocalName().substring(4));
+        opinionMatrix.set(index,row);
     }
 
 
     protected void writeLines(){
+
+        //OPINION MATRIX txt
         try{
             data = new FileWriter(title, true);
 
             PrintWriter out = new PrintWriter(data);
 
-            out.print("uDays " + uDays + "\n inclDistr " + Arrays.toString(User.inclDistr));
-            out.print("\n");
-
-            for(int i=1; i<=userNumber; i++){
+            for(int i=0; i<userNumber; i++){
                 ArrayList<Double> row = opinionMatrix.get(i);
-                if(i!=0){out.print("\n");}
-                for(int j=1; j<=companies; j++){
+
+                for(int j=0; j<companies; j++){
                     out.print( row.get(j) );
-                    out.print(", ");
+                    if(j != companies-1) {
+                        out.print(",");
+                    }
                 }
+                out.print("\n");
             }
-            out.print("\n");
 
             out.flush();
             out.close();
             data.close();
         }catch(IOException e){e.printStackTrace();}
 
+        //INCLINATION DISTRIBUTION txt
+        try{
+            dataInc = new FileWriter(titleInc, true);
+
+            PrintWriter out = new PrintWriter(dataInc);
+
+            int size = User.inclDistr.length;
+            for(int i = 0 ; i < size ; i++){
+                out.print(User.inclDistr[i]);
+                if(i != size -1){
+                    out.print(",");
+                }
+            }
+            out.print("\n");
+
+            out.flush();
+            out.close();
+            dataInc.close();
+        }catch(IOException e){e.printStackTrace();}
     }
-
-
-
 
 }

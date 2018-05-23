@@ -6,8 +6,6 @@ import jade.wrapper.StaleProxyException;
 
 import java.util.ArrayList;
 
-
-
 public class MainSocial {
     public static void main(String[] args) {
         jade.core.Runtime runtime = jade.core.Runtime.instance();
@@ -16,13 +14,13 @@ public class MainSocial {
         p.setParameter(Profile.GUI , "false");
         ContainerController cc = runtime.createMainContainer(p);
 
-        User.days = 15;
-        User.companies = 10;
+        User.days = 25;
+        User.companies = 5;
         User.opinionRange = 10;
         User.userNumber = 100;
 
         User.title =  "c" + User.companies + "r" + User.opinionRange + "n" + User.userNumber + ".txt";
-
+        User.titleInc = "c" + User.companies + "r" + User.opinionRange + "n" + User.userNumber + "Inc.txt";
 
 
         for(int i=0 ; i<User.userNumber ; i++ ) {

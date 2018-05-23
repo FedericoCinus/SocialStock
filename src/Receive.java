@@ -7,9 +7,9 @@ import jade.lang.acl.UnreadableException;
 import java.util.ArrayList;
 
 public class Receive extends CyclicBehaviour{
-/**
- * Getting the sender convintion and his company value map from a msg 
- */
+    /**
+     * Getting the sender convintion and his company value map from a msg
+     */
 
     User a = (User) myAgent;
 
