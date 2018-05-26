@@ -24,8 +24,8 @@ public class MainSocial {
         User.opinionRange = 10;
         User.userNumber = 10;
 
-        User.title =  "c" + User.companies + "r" + User.opinionRange + "n" + User.userNumber + ".txt";
-        User.titleInc = "c" + User.companies + "r" + User.opinionRange + "n" + User.userNumber + "Inc.txt";
+        User.title =  "data/c" + User.companies + "r" + User.opinionRange + "n" + User.userNumber + ".txt";
+        User.titleInc = "data/c" + User.companies + "r" + User.opinionRange + "n" + User.userNumber + "Inc.txt";
         User.titleInt = "data/c" + User.companies + "r" + User.opinionRange + "n" + User.userNumber + "Int.txt";
 
         try{

@@ -31,9 +31,11 @@ public class StepsBehaviour extends Behaviour {
             case 2:
                 if(User.userCounter == User.userNumber){
                     a.setCallOut(a.makeCallOut());
+                    a.writeLineInt();
                     //System.out.println("case2 step is  " + step );
                     step++;
                 }
+
                 break;
             case 3:
                 //System.out.print("Inclination Distribution: " );
