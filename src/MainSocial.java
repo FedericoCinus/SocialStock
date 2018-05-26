@@ -23,6 +23,7 @@ public class MainSocial {
 
         User.title =  "c" + User.companies + "r" + User.opinionRange + "n" + User.userNumber + ".txt";
         User.titleInc = "c" + User.companies + "r" + User.opinionRange + "n" + User.userNumber + "Inc.txt";
+        User.titleInt = "data/c" + User.companies + "r" + User.opinionRange + "n" + User.userNumber + "Int.txt";
 
 
         for(int i=0 ; i<User.userNumber ; i++ ) {

@@ -76,6 +76,8 @@ public class StepsBehaviour extends Behaviour {
                         step++;
                     }
                     else{
+                        a.callOut.clear();
+                        a.callOutInt.clear();
                         step=0;
                     }
                 }
