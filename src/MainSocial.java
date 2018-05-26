@@ -14,7 +14,7 @@ public class MainSocial {
         p.setParameter(Profile.GUI , "false");
         ContainerController cc = runtime.createMainContainer(p);
 
-        User.days = 25;
+        User.days = 50;
         User.companies = 5;
         User.opinionRange = 10;
         User.userNumber = 100;

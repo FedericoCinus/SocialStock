@@ -76,11 +76,13 @@ public class User extends Agent{
         }
         this.opinionVector = vec;
         //defining the degree of each User as the total number of User times random value [0,1]
-        this.degree = (int) (Math.random() * userNumber);
+        //this.degree = (int) (Math.random() * userNumber);
+        double gamma = 2.5;
+        this.degree = (int) Math.pow(1-Math.random(),1/(1-gamma));
 
-        System.out.println(getAID().getLocalName() + " :my opinion vector is");
+        System.out.println(getAID().getLocalName() + " : my opinion vector is");
         System.out.println(this.opinionVector);
-        System.out.println(getAID().getLocalName() + " :my degree is");
+        System.out.println(getAID().getLocalName() + " : my degree is");
         System.out.println(this.degree);
     }
 
@@ -98,7 +100,7 @@ public class User extends Agent{
 
         double var = (double)(Math.pow(opinionRange, 2) - 1)/(12*companies);
         double mu  = (double)(opinionRange-1)/2;
-        double q1 = (double)(mu + var*(-0.4399132));
+        double q1 = (double)(mu + Math.sqrt(var)*(-0.4307273));
         double q2 = opinionRange-1-q1;
 
         for(int i = 0; i< User.companies; i++) {
@@ -175,8 +177,14 @@ public class User extends Agent{
         for(int i = 0; i < result.size(); i++){
             resultAID.add(result.get(i).getName());
         }
+        ArrayList<String> resultLocal = new ArrayList<String>();
+        for(int i = 0; i < result.size(); i++){
+            resultLocal.add(resultAID.get(i).getLocalName());
+        }
 
-        resultAID.remove(resultAID.indexOf(this.getAID()));
+        try{
+            resultAID.remove(resultAID.indexOf(this.getAID()));
+        }catch(IndexOutOfBoundsException e){System.out.println("I'm : " +this.getAID().getLocalName() + "list " +  resultLocal);}
         Collections.shuffle(resultAID);
 
         /*System.out.println(getAID().getLocalName() + "\n" + "\t"
