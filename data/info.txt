@@ -1,0 +1,1 @@
+the data folder collects all info simulation on txt files 
