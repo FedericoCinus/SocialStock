@@ -22,7 +22,7 @@ public class User extends Agent{
     public static FileWriter dataInc = null;
     public static FileWriter dataInt = null;
 
-    public static  String title;
+    public static String title;
     public static String titleInc;
     public static String titleInt;
 
@@ -335,7 +335,7 @@ public class User extends Agent{
 
 
     protected void writeLineInt() {
-        try{
+        try {
             dataInt = new FileWriter(titleInt, true);
 
             PrintWriter out = new PrintWriter(dataInt);
@@ -358,9 +358,11 @@ public class User extends Agent{
             out.flush();
             out.close();
             dataInt.close();
-        }catch(IOException e){e.printStackTrace();}
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
-
+    }
 
 
 }
