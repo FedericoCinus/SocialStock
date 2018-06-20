@@ -14,10 +14,11 @@ public class MainSocial {
         p.setParameter(Profile.GUI , "false");
         ContainerController cc = runtime.createMainContainer(p);
 
-        User.days = 50;
+        User.days = 50
+        ;
         User.companies = 5;
         User.opinionRange = 10;
-        User.userNumber = 100;
+        User.userNumber = 1000;
 
         User.title =  "c" + User.companies + "r" + User.opinionRange + "n" + User.userNumber + ".txt";
         User.titleInc = "c" + User.companies + "r" + User.opinionRange + "n" + User.userNumber + "Inc.txt";
