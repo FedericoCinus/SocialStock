@@ -20,9 +20,12 @@ public class User extends Agent{
     // FIle.csv creation
     public static FileWriter data = null;
     public static FileWriter dataInc = null;
+    public static FileWriter dataInt = null;
 
-    public static  String title;
+    public static String title;
     public static String titleInc;
+    public static String titleInt;
+
     public static int days;
 
     public static int companies;
@@ -39,6 +42,8 @@ public class User extends Agent{
     ArrayList<Integer>  opinionVector = new ArrayList<Integer>();
     public int degree;
     public ArrayList<AID> callOut = new ArrayList<AID>();
+    public ArrayList<String> callOutInt = new ArrayList<String>();
+
 
     public ArrayList<Integer> getOpinionVector() {
         return opinionVector;
@@ -195,6 +200,10 @@ public class User extends Agent{
 
 
         if(this.getDegree()>=resultAID.size()){
+            for(int i = 0 ; i < resultAID.size() ; i++){
+                String name = resultAID.get(i).getLocalName();
+                callOutInt.add(name.substring(4));
+            }
             //System.out.println(getAID().getLocalName() +" ResultAID size is:" + resultAID.size());
             return resultAID;
         }
@@ -202,6 +211,11 @@ public class User extends Agent{
         ArrayList<AID> resultAID2 = new ArrayList<AID>();
         for(int i = 0; i < this.getDegree(); i++) {
             resultAID2.add(resultAID.get(i));
+        }
+
+        for(int i = 0 ; i < resultAID2.size() ; i++){
+            String name = resultAID2.get(i).getLocalName();
+            callOutInt.add(name.substring(4));
         }
         //System.out.println(getAID().getLocalName() +" ResultAID2 size is:" + resultAID2.size());
         return resultAID2;
@@ -319,5 +333,37 @@ public class User extends Agent{
             dataInc.close();
         }catch(IOException e){e.printStackTrace();}
     }
+
+
+    protected void writeLineInt() {
+        try {
+            dataInt = new FileWriter(titleInt, true);
+
+            PrintWriter out = new PrintWriter(dataInt);
+
+            out.print(uDays);
+            out.print(":");
+
+            out.print(getAID().getLocalName().substring(4));
+            out.print(":");
+
+            out.print(getInclination());
+            out.print(":");
+
+            out.print(getDegree());
+            out.print(":");
+
+            out.print(callOutInt);
+            out.print("\n");
+
+            out.flush();
+            out.close();
+            dataInt.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+    }
+
 
 }
