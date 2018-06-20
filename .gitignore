@@ -115,6 +115,7 @@ tex/*.pdf
 
 
 # JADE
-.jar
-.class
-.iml
+*.jar
+*.class
+*.iml
+*.xml
