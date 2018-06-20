@@ -189,10 +189,13 @@ public class User extends Agent{
         for(int i = 0; i < result.size(); i++){
             resultLocal.add(resultAID.get(i).getLocalName());
         }
-
+        /*
         try{
             resultAID.remove(resultAID.indexOf(this.getAID()));
-        }catch(IndexOutOfBoundsException e){System.out.println("I'm : " +this.getAID().getLocalName() + "list " +  resultLocal);}
+        }catch(IndexOutOfBoundsException e){
+            System.out.println("I'm : " +this.getAID().getLocalName() + "list " +  resultLocal);
+        }
+        */
         Collections.shuffle(resultAID);
 
         /*System.out.println(getAID().getLocalName() + "\n" + "\t"
