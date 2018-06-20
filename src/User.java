@@ -86,6 +86,8 @@ public class User extends Agent{
         double gamma = 2.5;
         this.degree = (int) Math.pow(1-Math.random(),1/(1-gamma));
 
+        System.out.println( getAID().getLocalName() );
+        
         /*System.out.println(getAID().getLocalName() + " : my opinion vector is");
         System.out.println(getAID().getLocalName() + " : my opinion vector is");
         System.out.println(this.opinionVector);
