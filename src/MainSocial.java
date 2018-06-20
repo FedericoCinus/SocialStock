@@ -22,7 +22,7 @@ public class MainSocial {
         User.days = 10;
         User.companies = 5;
         User.opinionRange = 10;
-        User.userNumber = 10;
+        User.userNumber = 1000;
 
         User.title =  "data/c" + User.companies + "r" + User.opinionRange + "n" + User.userNumber + ".txt";
         User.titleInc = "data/c" + User.companies + "r" + User.opinionRange + "n" + User.userNumber + "Inc.txt";
@@ -50,7 +50,7 @@ public class MainSocial {
             out.print("uDays");
             out.print("-");
 
-            out.print("index");
+            out.print("ind");
             out.print("-");
 
             out.print("incl");
