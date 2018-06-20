@@ -19,13 +19,7 @@ public class MainSocial {
         p.setParameter(Profile.GUI , "false");
         ContainerController cc = runtime.createMainContainer(p);
 
-<<<<<<< HEAD
-        User.days = 50
-        ;
-        User.companies = 5;
-        User.opinionRange = 10;
-        User.userNumber = 1000;
-=======
+
         User.days = 10;
         User.companies = 5;
         User.opinionRange = 10;
@@ -86,10 +80,6 @@ public class MainSocial {
             out.close();
             User.dataInc.close();
         }catch(IOException e){e.printStackTrace();}
-
->>>>>>> eb67d96397ffa644d5b8ec0d1a9ab08d3f004252
-
-
 
         for(int i=0 ; i<User.userNumber ; i++ ) {
             User.opinionMatrix.add(new ArrayList<Double>());
