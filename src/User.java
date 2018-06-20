@@ -82,10 +82,16 @@ public class User extends Agent{
         this.opinionVector = vec;
         //defining the degree of each User as the total number of User times random value [0,1]
         //this.degree = (int) (Math.random() * userNumber);
+
         double gamma = 2.5;
         this.degree = (int) Math.pow(1-Math.random(),1/(1-gamma));
 
+<<<<<<< HEAD
         /*System.out.println(getAID().getLocalName() + " : my opinion vector is");
+=======
+        /*
+        System.out.println(getAID().getLocalName() + " : my opinion vector is");
+>>>>>>> cb1f794521b9b5aae5bf09d13544ef8ae5c03a1a
         System.out.println(this.opinionVector);
         System.out.println(getAID().getLocalName() + " : my degree is");
         System.out.println(this.degree);
