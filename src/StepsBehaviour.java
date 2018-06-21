@@ -59,6 +59,12 @@ public class StepsBehaviour extends Behaviour {
 
                         //File.csv filling
                         a.writeLines();
+                        try {
+                            Thread.sleep(10);
+                        }
+                        catch(InterruptedException e) {
+                            e.printStackTrace();
+                        }
 
                         User.userCounter = 0;
                         User.userCounter1 = 0;

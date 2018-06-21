@@ -19,10 +19,10 @@ public class MainSocial {
         p.setParameter(Profile.GUI , "false");
         ContainerController cc = runtime.createMainContainer(p);
 
-        User.days = 10;
-        User.companies = 5;
+        User.days = 20;
+        User.companies = 2;
         User.opinionRange = 10;
-        User.userNumber = 10;
+        User.userNumber = 100;
 
         User.title =  "data/c" + User.companies + "r" + User.opinionRange + "n" + User.userNumber + ".txt";
         User.titleInc = "data/c" + User.companies + "r" + User.opinionRange + "n" + User.userNumber + "Inc.txt";
