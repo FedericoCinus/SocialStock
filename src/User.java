@@ -37,6 +37,12 @@ public class User extends Agent{
     public static int[] inclDistr = {0,0,0};
     public static ArrayList<ArrayList<Double>> opinionMatrix = new ArrayList<ArrayList<Double>>();
 
+    //Influencing parameters
+    public static Double influencingPerc;
+    public static int influencingCompany;
+    public static int influencingValue;
+    public static String influencingType;
+
 
     public int uDays = 1;
     ArrayList<Integer>  opinionVector = new ArrayList<Integer>();

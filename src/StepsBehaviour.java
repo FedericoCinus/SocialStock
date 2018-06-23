@@ -38,7 +38,13 @@ public class StepsBehaviour extends Behaviour {
 
                 break;
             case 3:
-                //System.out.print("Inclination Distribution: " );
+                // influencing users
+
+                if(a.uDays==User.days/2 && Math.random()<User.influencingPerc){
+                    System.out.println("I am going to change opinion;  " + a.getOpinionVector());
+                    a.opinionVector.set(User.influencingCompany, User.influencingValue);
+                    System.out.println("I have changed opinion;  "+ a.getOpinionVector());
+                    }
                 step++;
                 break;
             case 4:

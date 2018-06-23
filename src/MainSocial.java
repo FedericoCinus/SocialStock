@@ -22,7 +22,18 @@ public class MainSocial {
         User.days = 20;
         User.companies = 2;
         User.opinionRange = 10;
-        User.userNumber = 100;
+        User.userNumber = 10;
+
+        // Setting parameters for influencing given percentage of users
+        User.influencingPerc = 0.5;
+        User.influencingCompany = 2;
+        User.influencingType = "Bad";
+        if(User.influencingType=="Bad") {
+            User.influencingValue = 0;
+        }
+        if(User.influencingType=="Good"){
+            User.influencingValue = User.opinionRange;
+        }
 
         User.title =  "data/c" + User.companies + "r" + User.opinionRange + "n" + User.userNumber + ".txt";
         User.titleInc = "data/c" + User.companies + "r" + User.opinionRange + "n" + User.userNumber + "Inc.txt";
