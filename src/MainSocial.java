@@ -19,13 +19,16 @@ public class MainSocial {
         p.setParameter(Profile.GUI , "false");
         ContainerController cc = runtime.createMainContainer(p);
 
+
+        //INPUT PARAMETERS
         User.days = 20;
         User.companies = 2;
         User.opinionRange = 10;
         User.userNumber = 10;
+        User.gamma = 2.5;
 
         // Setting parameters for influencing given percentage of users
-        User.influencingPerc = 0.5;
+        User.influencingPerc = 0.;
         User.influencingCompany = 2;
         User.influencingType = "Bad";
         if(User.influencingType=="Bad") {

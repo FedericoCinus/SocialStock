@@ -28,9 +28,12 @@ public class User extends Agent{
 
     public static int days;
 
+
     public static int companies;
     public static int opinionRange;
     public static int userNumber;
+    public static double gamma;
+
     public static int userCounter = 0;
     public static int userCounter1 = 0;
     public static int userCounterD = 0;
@@ -89,8 +92,9 @@ public class User extends Agent{
         //defining the degree of each User as the total number of User times random value [0,1]
         //this.degree = (int) (Math.random() * userNumber);
 
-        double gamma = 2.5;
         this.degree = (int) Math.pow(1-Math.random(),1/(1-gamma));
+        this.degree = (gamma == 0.) ? this.degree*userNumber : this.degree;
+
 
         System.out.println( getAID().getLocalName() );
         
