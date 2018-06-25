@@ -33,6 +33,7 @@ public class User extends Agent{
     public static int opinionRange;
     public static int userNumber;
     public static double gamma;
+    public static double percDiff;
 
     public static int userCounter = 0;
     public static int userCounter1 = 0;
@@ -92,8 +93,8 @@ public class User extends Agent{
         //defining the degree of each User as the total number of User times random value [0,1]
         //this.degree = (int) (Math.random() * userNumber);
 
-        this.degree = (int) Math.pow(1-Math.random(),1/(1-gamma));
-        this.degree = (gamma == 0.) ? this.degree*userNumber : this.degree;
+        double deg = Math.pow(1-Math.random(),1/(1-gamma));
+        this.degree = (gamma == 0.) ? (int) (deg*userNumber) : (int) deg;
 
 
         System.out.println( getAID().getLocalName() );
@@ -177,66 +178,100 @@ public class User extends Agent{
          * creating a list for comunication between users with a certain percentage of
          * same opinion (perc)
          */
-        DFAgentDescription template = new DFAgentDescription();
-        ServiceDescription sd = new ServiceDescription();
-        sd.setName("My inclination is " + this.getInclination());
-        sd.setType("");
-        template.addServices(sd);
 
-        ArrayList<DFAgentDescription> result = new ArrayList<DFAgentDescription>() ;
+        //SAME INCLINATION
+        int my_incl = this.getInclination();
+        ArrayList<AID> resultAID0 = genResultAID(this.getInclination());
 
-        try {
-            DFAgentDescription[] prova = DFService.search(this, template);
-            result = new ArrayList<DFAgentDescription>(Arrays.asList(prova));
+        //OTHER INCLINATIONS
+        int other_incl1 = ((my_incl + 2) % 3) - 1;
+        int other_incl2 = ((my_incl + 3) % 3) - 1;
+
+        ArrayList<AID> resultAID1 = genResultAID(other_incl1);
+        ArrayList<AID> resultAID2 = genResultAID(other_incl2);
+        ArrayList<AID> resultAID12 = resultAID1;
+        for(int i = 0 ; i < resultAID2.size() ; i++){
+            resultAID12.add(resultAID2.get(i));
         }
-        catch (FIPAException e){
-            e.printStackTrace();
-        }
+        Collections.shuffle(resultAID12);
+
+        int other = (int) (percDiff * this.getDegree());
+        int same = this.getDegree() - other;
 
         ArrayList<AID> resultAID = new ArrayList<AID>();
-        for(int i = 0; i < result.size(); i++){
-            resultAID.add(result.get(i).getName());
-        }
-        ArrayList<String> resultLocal = new ArrayList<String>();
-        for(int i = 0; i < result.size(); i++){
-            resultLocal.add(resultAID.get(i).getLocalName());
-        }
-        /*
-        try{
-            resultAID.remove(resultAID.indexOf(this.getAID()));
-        }catch(IndexOutOfBoundsException e){
-            System.out.println("I'm : " +this.getAID().getLocalName() + "list " +  resultLocal);
-        }
-        */
-        Collections.shuffle(resultAID);
-
-        /*System.out.println(getAID().getLocalName() + "\n" + "\t"
-                + " Deg= " + getDegree()
-                + " Incl= " + getInclination() + "\n" + "\t"
-                + " oVec= " + getOpinionVector());*/
-
-
-        if(this.getDegree()>=resultAID.size()){
+        //CASE1 ENOUGH SAMES AND ENOUGH OTHERS
+        if(same <= resultAID0.size() && other <= resultAID12.size()){
+            for(int i = 0 ; i < same ; i++){
+                resultAID.add(resultAID0.get(i));
+            }
+            for(int i = 0 ; i < other ; i++){
+                resultAID.add(resultAID12.get(i));
+            }
+            ///////////////////////////////////////////////
             for(int i = 0 ; i < resultAID.size() ; i++){
                 String name = resultAID.get(i).getLocalName();
                 callOutInt.add(name.substring(4));
             }
-            //System.out.println(getAID().getLocalName() +" ResultAID size is:" + resultAID.size());
-            return resultAID;
+            ///////////////////////////////////////////////
+            return(resultAID);
+        }else{
+            //CASE2 NOT ENOUGH SAMES
+            if(same >= resultAID0.size()){
+                resultAID = resultAID0; //same == resultAID0.size()
+                other = this.getDegree() - resultAID0.size();
+                for(int i = 0 ; i < other ; i++){
+                    resultAID.add(resultAID12.get(i));
+                }
+                ////////////////////////////////////////////////
+                for(int i = 0 ; i < resultAID.size() ; i++){
+                    String name = resultAID.get(i).getLocalName();
+                    callOutInt.add(name.substring(4));
+                }
+                ////////////////////////////////////////////////
+                return(resultAID);
+            }
+            //CASE3 NOT ENOUGH OTHERS
+            else{
+                resultAID = resultAID12; // other = resultAID12.size()
+                same = this.getDegree() - resultAID12.size();
+                for(int i = 0 ; i < same ; i++){
+                    resultAID.add(resultAID0.get(i));
+                }
+                /////////////////////////////////////////////////
+                for(int i = 0 ; i < resultAID.size() ; i++){
+                    String name = resultAID.get(i).getLocalName();
+                    callOutInt.add(name.substring(4));
+                }
+                /////////////////////////////////////////////////
+                return(resultAID);
+            }
         }
-
-        ArrayList<AID> resultAID2 = new ArrayList<AID>();
-        for(int i = 0; i < this.getDegree(); i++) {
-            resultAID2.add(resultAID.get(i));
-        }
-
-        for(int i = 0 ; i < resultAID2.size() ; i++){
-            String name = resultAID2.get(i).getLocalName();
-            callOutInt.add(name.substring(4));
-        }
-        //System.out.println(getAID().getLocalName() +" ResultAID2 size is:" + resultAID2.size());
-        return resultAID2;
     }
+
+    protected ArrayList<AID> genResultAID(int incl){
+
+        DFAgentDescription template = new DFAgentDescription();
+        ServiceDescription sd = new ServiceDescription();
+        sd.setName("My inclination is " + incl);
+        sd.setType("");
+        template.addServices(sd);
+
+        ArrayList<DFAgentDescription> result = new ArrayList<DFAgentDescription>();
+        try {
+            DFAgentDescription[] prova = DFService.search(this, template);
+            result = new ArrayList<DFAgentDescription>(Arrays.asList(prova));
+        } catch (FIPAException e) {
+            e.printStackTrace();
+        }
+        ArrayList<AID> resultAID = new ArrayList<AID>();
+        for (int i = 0; i < result.size(); i++) {
+            resultAID.add(result.get(i).getName());
+        }
+        Collections.shuffle(resultAID);
+        return resultAID;
+    }
+
+
 
     protected void sendMsg() {
 
@@ -259,6 +294,7 @@ public class User extends Agent{
             send(msg);
         }
     }
+
 
 
     protected int compareVectors(ArrayList<Integer> vec1 , ArrayList<Integer> vec2){

@@ -23,9 +23,10 @@ public class MainSocial {
         //INPUT PARAMETERS
         User.days = 20;
         User.companies = 2;
-        User.opinionRange = 10;
-        User.userNumber = 10;
-        User.gamma = 2.5;
+        User.opinionRange = 5;
+        User.userNumber = 100;
+        User.gamma = 0.; // 0. uniform ; [2:3] scale-free 
+        User.percDiff = 0.;
 
         // Setting parameters for influencing given percentage of users
         User.influencingPerc = 0.;
