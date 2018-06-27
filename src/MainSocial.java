@@ -21,12 +21,12 @@ public class MainSocial {
 
 
         //INPUT PARAMETERS
-        User.days = 20;
-        User.companies = 2;
+        User.days = 50;
+        User.companies = 3;
         User.opinionRange = 5;
         User.userNumber = 100;
-        User.gamma = 0.; // 0. uniform ; [2:3] scale-free 
-        User.percDiff = 0.;
+        User.gamma = 2.5; // 0. uniform ; [2:3] scale-free
+        User.percDiff = 0.2;
 
         // Setting parameters for influencing given percentage of users
         User.influencingPerc = 0.;
@@ -40,7 +40,6 @@ public class MainSocial {
         }
 
         User.title =  "data/c" + User.companies + "r" + User.opinionRange + "n" + User.userNumber + ".txt";
-        User.titleInc = "data/c" + User.companies + "r" + User.opinionRange + "n" + User.userNumber + "Inc.txt";
         User.titleInt = "data/c" + User.companies + "r" + User.opinionRange + "n" + User.userNumber + "Int.txt";
 
         try{
@@ -81,21 +80,6 @@ public class MainSocial {
             out.close();
             User.dataInt.close();
         }catch(IOException e){e.printStackTrace();}
-
-        try{
-            User.dataInc = new FileWriter(User.titleInc);
-
-            PrintWriter out = new PrintWriter(User.dataInc);
-
-            out.print("InclDistr");
-            out.print("\n");
-
-            out.flush();
-            out.close();
-            User.dataInc.close();
-        }catch(IOException e){e.printStackTrace();}
-
-
 
 
         for(int i=0 ; i<User.userNumber ; i++ ) {

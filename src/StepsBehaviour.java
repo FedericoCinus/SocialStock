@@ -12,12 +12,15 @@ public class StepsBehaviour extends Behaviour {
     public void action(){
         switch (step){
             case 0:
+                // OPINION MATRIX
                 a.saveOpinion();
                 //System.out.println("I'm " + a.getAID().getLocalName() + " my day is : " + a.uDays);
                 //System.out.println("case0 step is  " + step );
+                a.written=false;
                 step++;
                 break;
             case 1:
+                // REGISTRATION ON DF
                 a.register();
                 int p = User.inclDistr[a.getInclination()+1];
                 User.inclDistr[a.getInclination()+1] = p+1;
@@ -29,17 +32,16 @@ public class StepsBehaviour extends Behaviour {
                 step++;
                 break;
             case 2:
+                // CREATING CALLOUT LIST AND INT FILE
                 if(User.userCounter == User.userNumber){
                     a.setCallOut(a.makeCallOut());
-                    a.writeLineInt();
                     //System.out.println("case2 step is  " + step );
                     step++;
                 }
 
                 break;
             case 3:
-                // influencing users
-
+                // INFLUENCING USERS
                 if(a.uDays==User.days/2 && Math.random()<User.influencingPerc){
                     System.out.println("I am going to change opinion;  " + a.getOpinionVector());
                 a.opinionVector.set(User.influencingCompany, User.influencingValue);
@@ -48,13 +50,20 @@ public class StepsBehaviour extends Behaviour {
                 step++;
                 break;
             case 4:
+                // SENDING MESSAGES
                 a.sendMsg();
                 User.userCounter1++;
                 //System.out.println("case4 step is  " + step );
                 step++;
                 break;
             case 5:
+                // RECIEVING AND OPINION MATRIX FILE
                 if(User.userCounter1 == User.userNumber){
+                    a.writeLineInt();
+                    if(a.written==false){
+                        System.out.println(a.getAID().getLocalName() + "written false");
+                        a.writeLineInt();
+                    }
                     a.addBehaviour(new Receive(a));
                     try{
                         DFService.deregister(a);

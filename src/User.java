@@ -19,11 +19,9 @@ public class User extends Agent{
 
     // FIle.csv creation
     public static FileWriter data = null;
-    public static FileWriter dataInc = null;
     public static FileWriter dataInt = null;
 
     public static String title;
-    public static String titleInc;
     public static String titleInt;
 
     public static int days;
@@ -47,6 +45,8 @@ public class User extends Agent{
     public static int influencingValue;
     public static String influencingType;
 
+    //WritingInt flag
+    public static Boolean written;
 
     public int uDays = 1;
     ArrayList<Integer>  opinionVector = new ArrayList<Integer>();
@@ -213,6 +213,8 @@ public class User extends Agent{
                 callOutInt.add(name.substring(4));
             }
             ///////////////////////////////////////////////
+            //writing file
+            //writeLineInt();
             return(resultAID);
         }else{
             //CASE2 NOT ENOUGH SAMES
@@ -228,6 +230,8 @@ public class User extends Agent{
                     callOutInt.add(name.substring(4));
                 }
                 ////////////////////////////////////////////////
+                //writing file
+                //writeLineInt();
                 return(resultAID);
             }
             //CASE3 NOT ENOUGH OTHERS
@@ -243,8 +247,11 @@ public class User extends Agent{
                     callOutInt.add(name.substring(4));
                 }
                 /////////////////////////////////////////////////
+                //writing file
+                //writeLineInt();
                 return(resultAID);
             }
+
         }
     }
 
@@ -366,34 +373,19 @@ public class User extends Agent{
             data.close();
         }catch(IOException e){e.printStackTrace();}
 
-        //INCLINATION DISTRIBUTION txt
-        try{
-            dataInc = new FileWriter(titleInc, true);
-
-            PrintWriter out = new PrintWriter(dataInc);
-
-            int size = User.inclDistr.length;
-            for(int i = 0 ; i < size ; i++){
-                out.print(User.inclDistr[i]);
-                if(i != size -1){
-                    out.print(",");
-                }
-            }
-            out.print("\n");
-
-            out.flush();
-            out.close();
-            dataInc.close();
-        }catch(IOException e){e.printStackTrace();}
     }
 
 
-    protected void writeLineInt() {
+    protected synchronized void writeLineInt() {
         try {
             dataInt = new FileWriter(titleInt, true);
 
             PrintWriter out = new PrintWriter(dataInt);
-
+            String index = getAID().getLocalName().substring(4);
+            String line = uDays + ":" + index + ":" + getInclination() + ":" + getDegree() + ":" + callOutInt + "\n";
+            out.print(line);
+            written=true;
+            /*
             out.print(uDays);
             out.print(":");
 
@@ -408,6 +400,8 @@ public class User extends Agent{
 
             out.print(callOutInt);
             out.print("\n");
+            */
+
 
             out.flush();
             out.close();
