@@ -20,9 +20,13 @@ public class User extends Agent{
     // FIle.csv creation
     public static FileWriter data = null;
     public static FileWriter dataInt = null;
+    public static FileWriter dataInt2 = null;
+    public static String stringDataInt;
+
 
     public static String title;
     public static String titleInt;
+    public static String titleInt2;
 
     public static int days;
 
@@ -373,6 +377,19 @@ public class User extends Agent{
             data.close();
         }catch(IOException e){e.printStackTrace();}
 
+        //writing stringDataInt in dataInt2;
+        try{
+            dataInt2 = new FileWriter(titleInt2, true);
+
+            PrintWriter out = new PrintWriter(dataInt2);
+
+            out.print(stringDataInt);
+            out.flush();
+            out.close();
+            stringDataInt = "";
+            dataInt2.close();
+        }catch(IOException e){e.printStackTrace();}
+
     }
 
 
@@ -383,6 +400,8 @@ public class User extends Agent{
             PrintWriter out = new PrintWriter(dataInt);
             String index = getAID().getLocalName().substring(4);
             String line = uDays + ":" + index + ":" + getInclination() + ":" + getDegree() + ":" + callOutInt + "\n";
+            User.stringDataInt += line;
+
             out.print(line);
             written=true;
             /*
@@ -411,6 +430,9 @@ public class User extends Agent{
         }
 
     }
+
+
+
 
 
 }

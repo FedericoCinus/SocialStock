@@ -21,10 +21,10 @@ public class MainSocial {
 
 
         //INPUT PARAMETERS
-        User.days = 50;
+        User.days = 20;
         User.companies = 3;
         User.opinionRange = 5;
-        User.userNumber = 100;
+        User.userNumber = 10;
         User.gamma = 2.5; // 0. uniform ; [2:3] scale-free
         User.percDiff = 0.2;
 
@@ -41,6 +41,8 @@ public class MainSocial {
 
         User.title =  "data/c" + User.companies + "r" + User.opinionRange + "n" + User.userNumber + ".txt";
         User.titleInt = "data/c" + User.companies + "r" + User.opinionRange + "n" + User.userNumber + "Int.txt";
+        User.titleInt2 = "data/c" + User.companies + "r" + User.opinionRange + "n" + User.userNumber + "Int2.txt";
+
 
         try{
             User.data= new FileWriter(User.title);
@@ -79,6 +81,31 @@ public class MainSocial {
             out.flush();
             out.close();
             User.dataInt.close();
+        }catch(IOException e){e.printStackTrace();}
+
+        try{
+            User.dataInt2 = new FileWriter(User.titleInt2);
+
+            PrintWriter out = new PrintWriter(User.dataInt2);
+
+            out.print("uDays");
+            out.print("-");
+
+            out.print("ind");
+            out.print("-");
+
+            out.print("incl");
+            out.print("-");
+
+            out.print("deg");
+            out.print("-");
+
+            out.print("callout");
+            out.print("\n");
+
+            out.flush();
+            out.close();
+            User.dataInt2.close();
         }catch(IOException e){e.printStackTrace();}
 
 

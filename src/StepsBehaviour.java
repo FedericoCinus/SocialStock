@@ -59,6 +59,8 @@ public class StepsBehaviour extends Behaviour {
             case 5:
                 // RECIEVING AND OPINION MATRIX FILE
                 if(User.userCounter1 == User.userNumber){
+
+                    //every user adds a line is stringDataInt
                     a.writeLineInt();
                     if(a.written==false){
                         System.out.println(a.getAID().getLocalName() + "written false");
@@ -73,6 +75,7 @@ public class StepsBehaviour extends Behaviour {
                         System.out.println("day : "+ a.uDays );
 
                         //File.csv filling
+                        //stringDataInt filling
                         a.writeLines();
                         try {
                             Thread.sleep(10);
