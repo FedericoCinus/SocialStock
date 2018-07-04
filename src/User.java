@@ -21,7 +21,7 @@ public class User extends Agent{
     public static FileWriter data = null;
     public static FileWriter dataInt = null;
     public static FileWriter dataInt2 = null;
-    public static String stringDataInt;
+    public static String stringDataInt = "";
 
 
     public static String title;
@@ -48,9 +48,6 @@ public class User extends Agent{
     public static int influencingCompany;
     public static int influencingValue;
     public static String influencingType;
-
-    //WritingInt flag
-    public static Boolean written;
 
     public int uDays = 1;
     ArrayList<Integer>  opinionVector = new ArrayList<Integer>();
@@ -403,7 +400,6 @@ public class User extends Agent{
             User.stringDataInt += line;
 
             out.print(line);
-            written=true;
             /*
             out.print(uDays);
             out.print(":");
