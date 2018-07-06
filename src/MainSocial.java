@@ -21,7 +21,7 @@ public class MainSocial {
 
 
         //INPUT PARAMETERS
-        User.days = 100;
+        User.days = 150;
         User.companies = 3;
         User.opinionRange = 5;
         User.userNumber = 100;
