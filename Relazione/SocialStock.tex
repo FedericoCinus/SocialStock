@@ -48,6 +48,45 @@ MultiAgent Systems Course A.A. 2017/2018 Prof. Marco Maggiora
 
 \section{The Model}
 
+\begin{comment}
+
+SCHEMA DEL MODELLO
+
+la classe user
+
+	gli attributi personali dello user : opinion vector (V) /inclination (I) /percdiff (p) /degree (d)  
+							       
+	gli attributi statici : opinion range (R) / gamma (G) / userNumber (N) / companies (C) 
+	 
+		opinion vector -> tante entrate quante le companies 
+			ciascun entrata può assumere un valore fra 0 e l'opinion range R
+						
+\end{comment}
+
+The initial world's configuration is given by the instantiation of $N$ Users. 
+The Users live in a world with $C$ companies and are provided with a set of opinions, one for each company. 
+The specific opinion is a positive integer which ranges from $0$ to $R-1$, let $R$ denote the opinion range.
+Each User is denoted by an inclination $I \in \{-1,0,1\}$ which represents its average opinion along the companies. The $-1, 0,$ and $1$ values denote respectively a "bad", "neutral" and "good" average opinion.  
+
+The simulation is made up by a series of $D$ temporal steps which we call days. 
+On the first day the Users' opinions are randomly intialized. 
+On each day the Users influence each other by one-to-one interactions in which opinions can be exchanged.
+Each User has a degree $k$ which is the number of Users with which he can interact during the day.
+
+
+
+
+
+
+
+
+\subsection{The User Class}
+	
+
+
+
+
+
 \section{Graphs and results}
 
 \section{Error estimation}
