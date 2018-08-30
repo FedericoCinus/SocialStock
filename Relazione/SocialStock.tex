@@ -48,37 +48,66 @@ MultiAgent Systems Course A.A. 2017/2018 Prof. Marco Maggiora
 
 \section{The Model}
 
-\begin{comment}
-
-SCHEMA DEL MODELLO
-
-la classe user
-
-	gli attributi personali dello user : opinion vector (V) /inclination (I) /percdiff (p) /degree (d)  
-							       
-	gli attributi statici : opinion range (R) / gamma (G) / userNumber (N) / companies (C) 
-	 
-		opinion vector -> tante entrate quante le companies 
-			ciascun entrata può assumere un valore fra 0 e l'opinion range R
-						
-\end{comment}
+\subsection{Users and Companies}
 
 The initial world's configuration is given by the instantiation of $N$ Users. 
-The Users live in a world with $C$ companies and are provided with a set of opinions, one for each company. 
-The specific opinion is a positive integer which ranges from $0$ to $R-1$, let $R$ denote the opinion range.
-Each User is denoted by an inclination $I \in \{-1,0,1\}$ which represents its average opinion along the companies. The $-1, 0,$ and $1$ values denote respectively a "bad", "neutral" and "good" average opinion.  
+The Users live in a world with $C$ companies (which are indexed from $0$ to $C-1$) and are provided with a set of opinions, one for each company.
 
+An opinion is a positive integer which ranges from $0$ to $R-1$, let $R$ denote the opinion range. For each User the opinions are stored within a vector $ \mathbf{v} \in \mathbb{N}^C$ which we denote as the opinion vector, the entry $  \mathbf{v}_c $ is the opinion on the $c$-th company.
+
+Each User has an inclination $I \in \{-1,0,1\}$ whose possible values denote respectively a "bad", "neutral" and "good" average opinion across the companies, its computation is described with further detail in the following pages.
+  
 The simulation is made up by a series of $D$ temporal steps which we call days. 
-On the first day the Users' opinions are randomly intialized. 
-On each day the Users influence each other by one-to-one interactions in which opinions can be exchanged.
-Each User has a degree $k$ which is the number of Users with which he can interact during the day.
+On first day the Users' opinions are randomly intialized. 
+On each day the Users influence each other with one-to-one interactions in which opinions can be exchanged.
 
+\subsection{Interaction}
 
+Each User has a degree $k$ which is the number of Users to whom he can send messages during the day.
 
+Let's consider an interacting couple and call the two Users A and B having respectively degree $k_A$ and 
+$k_B$, the interaction consists in three steps :
+\begin{itemize}
+	\item[1] A sends a message to B
+	\item[] The message contains information on A's opinion vector $\mathbf{v}_A$ and degree $k_A$  
+	\item[2] B receives A's message
+	\item[] B compares its opinion vector $\mathbf{v}_B$ with $\mathbf{v}_A$, given the subset of companies on which the two Users' opinion are different, a company's index is extracted according to a uniform distribution. If $\mathbf{v}_A$ and $\mathbf{v}_B$ are equal the interaction stops. 
+	\item[3] Influence	
+	\item[] Let $c$ denote the extracted index, two possible events may occur: 
+	\begin{itemize}
+		\item The opinion on $c$-th company remains unchanged for B while A changes it to B's opinion. This event occurs with probability $k_B/(k_A + k_B)$.
+		\item The opinion on $c$-th company remains unchanged for A while B changes it to A's opinion. This event occurs with probability $k_A/(k_A + k_B)$.
+		\item[] Basically each User can influence the other on a differing opinion with a probability proportional to its degree. 	 	
+	\end{itemize} 		
+\end{itemize}
 
+\subsection{Inclination Computation}
 
+\begin{comment}
+Io metterei il calcolo dell'inclination in appendice 
+\end{comment}
 
+The Inclination for each User is computed by considering the average of the opinions across the companies.
 
+Let's consider an opinion vector $\mathbf{v}$ with entries $\mathbf{v}_c$ ($ c = 1, .., C $).
+Each entry $\mathbf{v}_c$ is drawn uniformly from the discrete set $\{ 0, 1,.., R-1 \}$.
+Recalling that the uniform discrete distribution $\mathcal{U}\{a,b\}$ has mean $\frac{a+b}{2}$ and variance ${\frac  {(b-a+1)^{2}-1}{12}}$ we have that $\mathcal{U}\{0,R-1\}$ has mean $\frac{R-1}{2}$ and variance ${\frac  {R^{2}-1}{12}}$
+
+Let $S$ be the average of $\mathbf{v}$ entries:
+$$ S = \sum_{c=1}^{C} \frac{ \mathbf{v}_c }{ C } $$ 
+
+For the central limit theorem, for $C \rightarrow \infty$ the random variable $S$ will follow a normal distribution with mean $\frac{R-1}{2}$ and variance ${\frac  {R^{2}-1}{12C}}$.
+
+In order to assess wether the inclination $I=-1$ we check if the value of $S$ lies under the quantile of order $1/3$ of the normal distribution ${\mathcal {N}}( \frac{R-1}{2} , {\frac  {R^{2}-1}{12C}})$. If $I=0$ then $S$ is between the $1/3$ and $2/3$ quantile, and $I=1$ if $S$ is over the $2/3$ quantile.
+
+The $1/3$ quantile of the standard normal ${\mathcal {N}}(0,1)$ is $q_{1/3}^{(S)} = -0.4399132$ and by simmetry $q_{2/3}^{(S)} = - q_{1/3}^{(S)} $. The $1/3$ quantile of ${\mathcal {N}}(\mu ,\sigma ^{2})$ is $q_{1/3} = \mu + \sigma q_{1/3}^{(S)}$ and the same applies for the $2/3$ quantile. 
+
+So, in summary, given the User's opinion vector $\mathbf{v}$ we compute its inclination according to the average of components $S$: 
+
+$$  I :={\begin{cases}-1&{\text{if }} S < \frac{R-1}{2} +  q_{1/3}^{(S)} \frac  {R^{2}-1}{12C},
+\\1&{\text{if }}  S > \frac{R-1}{2} +  q_{2/3}^{(S)} \frac  {R^{2}-1}{12C},
+\\0&{\text{if else }} \end{cases}}  $$
+  
 
 \subsection{The User Class}
 	
