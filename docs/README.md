@@ -11,7 +11,7 @@
 
 In this work is introduced the consensus problem on network. In particular we use MAS to model the opinion influence between nodes in a social network and study the time necessary to reach consensus. We introduced the possibility to vary the complexity of each node opinion over a set of fields which we call companies.
 Some estimation has been done in order to make the simulation suitable for representing reality and still keep computational costs low. Results show the robustness of the proposed solution both in scale free setting and uniform degree distribution setting.
-[More detail on Article.pdf file on the following link: https://github.com/FedericoCinus/SocialStock/blob/master/Article.pdf]
+[More detail on ![Article](#Article) file on the following link: https://github.com/FedericoCinus/SocialStock/blob/master/Article.pdf]
 
 
 ## Run
@@ -41,7 +41,7 @@ Let's consider an interacting couple and call the two Users A and B having respe
 $$k_B$$, the interaction consists in these steps :
 
 - Opinion comparison: 
-	- B compares its opinion vector $$\mathbf{v}_B$$ with $$\mathbf{v}_A$$, given the subset of companies on which the two Users' opinion are different, a company's index $$c$$ is extracted according to a uniform distribution. If $$\mathbf{v}_A$$ and $\mathbf{v}_B$ are equal the interaction stops. 
+	- B compares its opinion vector $$\mathbf{v}_B$$ with $$\mathbf{v}_A$$, given the subset of companies on which the two Users' opinion are different, a company's index $$c$$ is extracted according to a uniform distribution. If $$\mathbf{v}_A$$ and $$\mathbf{v}_B$$ are equal the interaction stops. 
 - Influence:	
 	- The opinion on $$c$$-th company remains unchanged for B while A changes it to B's opinion. This event occurs with probability $$k_B/(k_A + k_B)$$.
 	- The opinion on $$c$$-th company remains unchanged for A while B changes it to A's opinion. This event occurs with probability $$k_A/(k_A + k_B)$$.	 		
@@ -63,3 +63,4 @@ We verified that the model complexity is therefore the determinant factor for eq
 [gif2]: img/gif2.gif "gif2"
 [inc]: img/inc.pdf "inc"
 [opi]: img/opi.pdf "opi"
+[article]: https://github.com/FedericoCinus/SocialStock/blob/master/Article.pdf "article"
