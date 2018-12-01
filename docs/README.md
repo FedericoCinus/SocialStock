@@ -60,6 +60,6 @@ The analysis has 2 objectives:
 
 We verified that the model complexity is therefore the determinant factor for equilibrium time in network consensus: as the OpinionRange increases the equilibrium time increases too. We also found that scale free setting has a higher equilibrium time measure with respect to the uniform degree distribution setting. Moreover the standard deviation is dependent both on the OpinionRange and the network model setting. (see the article)
 
-[gif]: img/gif.gif "gif"
+[gif]: img/gif2.gif "gif"
 [inc]: img/inc.pdf "inc"
 [opi]: img/opi.pdf "opi"
