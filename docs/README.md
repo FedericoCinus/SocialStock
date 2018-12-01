@@ -20,16 +20,16 @@ Download JADE library from http://jade.tilab.com. Clone SocialStock repository f
 
 
 ## Model
-The initial world's configuration is given by the instantiation of N Users. 
+The initial world's configuration is given by the instantiation of $$N$$ Users. 
 The Users live in a world with $$C$$ companies, which are indexed from 0 to $$C-1$$, and are provided with a set of opinions, one for each company.
 
-An opinion is a positive integer which ranges from 0 to $$ R-1 $$, let $$R$$ denote the opinion range. For each User the opinions are stored within a vector $$ \mathbf{v} \in \mathbb{N}^C $$ which we denote as the opinion vector, the entry $  \mathbf{v}_c $ is the opinion on the c-th company.
+An opinion is a positive integer which ranges from 0 to $$ R-1 $$, let $$R$$ denote the opinion range. For each User the opinions are stored within a vector $$ \mathbf{v} \in \mathbb{N}^C $$ which we denote as the opinion vector, the entry $$  \mathbf{v}_c $$ is the opinion on the c-th company.
 
 Each User has an inclination $$I \in \{-1,0,1\}$$ whose possible values denote respectively a "bad", "neutral" and "good" averaging opinions across the companies.
 
 Each User has a degree k which is the number of Users to whom he can send messages during the day.
 
-Parameter k is generated randomly according to the scale-free distribution with parameter $\gamma$ and is never changed during the simulation; if $\gamma$ is set to zero then the degree distribution is uniform.
+Parameter k is generated randomly according to the scale-free distribution with parameter $$\gamma$$ and is never changed during the simulation; if $$\gamma$$ is set to zero then the degree distribution is uniform.
 
 On each day Users advertize their Inclination and Degree by registering to the Directory Facilitatory (DF); the DF is implemented by Jade and could be compared to the "Yellow Pages" phone book.
 Once all the Users have registered to the DF they can make queries in order to look for other Users sharing the same Inclination and then collecting them in a list whose length is equal to their degree. 
@@ -37,17 +37,17 @@ Then communication is accomplished through the exchange of messages to Users con
  
 Each time a User receives a message he interacts with the sender.
 
-Let's consider an interacting couple and call the two Users A and B having respectively degree $k_A$ and 
-$k_B$, the interaction consists in these steps :
-\begin{itemize}
+Let's consider an interacting couple and call the two Users A and B having respectively degree $$k_A$$ and 
+$$k_B$$, the interaction consists in these steps :
+$$\begin{itemize}
 	\item[1] Opinion comparison
-	\item[] B compares its opinion vector $\mathbf{v}_B$ with $\mathbf{v}_A$, given the subset of companies on which the two Users' opinion are different, a company's index $c$ is extracted according to a uniform distribution. If $\mathbf{v}_A$ and $\mathbf{v}_B$ are equal the interaction stops. 
+	\item[] B compares its opinion vector $$$\mathbf{v}_B$$ with $$\mathbf{v}_A$$, given the subset of companies on which the two Users' opinion are different, a company's index $c$ is extracted according to a uniform distribution. If $$\mathbf{v}_A$$ and $\mathbf{v}_B$ are equal the interaction stops. 
 	\item[2] Influence	
 	\begin{itemize}
-		\item The opinion on $c$-th company remains unchanged for B while A changes it to B's opinion. This event occurs with probability $k_B/(k_A + k_B)$.
-		\item The opinion on $c$-th company remains unchanged for A while B changes it to A's opinion. This event occurs with probability $k_A/(k_A + k_B)$.	 	
+		\item The opinion on $c$-th company remains unchanged for B while A changes it to B's opinion. This event occurs with probability $$k_B/(k_A + k_B)$$.
+		\item The opinion on $c$-th company remains unchanged for A while B changes it to A's opinion. This event occurs with probability $$k_A/(k_A + k_B)$$.	 	
 	\end{itemize} 		
-\end{itemize}
+\end{itemize}$$
 
 ## Analysis
 
