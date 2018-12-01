@@ -11,7 +11,7 @@
 
 In this work is introduced the consensus problem on network. In particular we use MAS to model the opinion influence between nodes in a social network and study the time necessary to reach consensus. We introduced the possibility to vary the complexity of each node opinion over a set of fields which we call companies.
 Some estimation has been done in order to make the simulation suitable for representing reality and still keep computational costs low. Results show the robustness of the proposed solution both in scale free setting and uniform degree distribution setting.
-[More detail on [Article](#Article) file on the following link: https://github.com/FedericoCinus/SocialStock/blob/master/Article.pdf]
+[More detail on Article.pdf file on the following link: https://github.com/FedericoCinus/SocialStock/blob/master/Article.pdf]
 
 
 ## Run
@@ -63,4 +63,3 @@ We verified that the model complexity is therefore the determinant factor for eq
 [gif2]: img/gif2.gif "gif2"
 [inc]: img/inc.pdf "inc"
 [opi]: img/opi.pdf "opi"
-## https://github.com/FedericoCinus/SocialStock/blob/master/Article.pdf
