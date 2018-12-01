@@ -52,7 +52,8 @@ The analysis has 2 objectives:
 - Visualization of the network evolution: red -> inclination=-1, green -> inclination=0, blue -> inclination=1
 ![gif][gif]
 
-- Finding equilibrium time in inclination vs time plot and opinions vs time plot:
+- Finding equilibrium time in inclination vs time plot and opinions vs time plot, with following parameters:
+3 companies, 100 users, 20 OpinionRange, scale free network
 ![inc][inc]
 ![opi][opi]
 
