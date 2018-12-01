@@ -12,12 +12,12 @@
 In this work is introduced the consensus problem on network. In particular we use MAS to model the opinion influence between nodes in a social network and study the time necessary to reach consensus. We introduced the possibility to vary the complexity of each node opinion over a set of fields which we call companies.
 Some estimation has been done in order to make the simulation suitable for representing reality and still keep computational costs low. Results show the robustness of the proposed solution both in scale free setting and uniform degree distribution setting.
 
-[More detail on Article.pdf file on the following link: https://github.com/FedericoCinus/SocialStock/blob/master/Article.pdf]
+[More detail on Article.pdf file on the following link: <https://github.com/FedericoCinus/SocialStock/blob/master/Article.pdf>]
 
 
 ## Run
 
-Download JADE library from http://jade.tilab.com. Clone SocialStock repository from GitHub. Run MainSocial in src directory.
+Download JADE library from <http://jade.tilab.com>. Clone SocialStock repository from GitHub. Run MainSocial in src directory.
 
 
 ## Model
