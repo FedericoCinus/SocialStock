@@ -19,16 +19,16 @@ Download JADE library from http://jade.tilab.com. Clone SocialStock repository f
 
 
 ## Model
-The initial world's configuration is given by the instantiation of $N$ Users. 
-The Users live in a world with $C$ companies, which are indexed from $0$ to $C-1$, and are provided with a set of opinions, one for each company.
+The initial world's configuration is given by the instantiation of N Users. 
+The Users live in a world with C companies, which are indexed from 0 to C-1, and are provided with a set of opinions, one for each company.
 
-An opinion is a positive integer which ranges from $0$ to $R-1$, let $R$ denote the opinion range. For each User the opinions are stored within a vector $ \mathbf{v} \in \mathbb{N}^C$ which we denote as the opinion vector, the entry $  \mathbf{v}_c $ is the opinion on the $c$-th company.
+An opinion is a positive integer which ranges from 0 to R-1, let R denote the opinion range. For each User the opinions are stored within a vector $ \mathbf{v} \in \mathbb{N}^C$ which we denote as the opinion vector, the entry $  \mathbf{v}_c $ is the opinion on the c-th company.
 
-Each User has an inclination $I \in \{-1,0,1\}$ whose possible values denote respectively a "bad", "neutral" and "good" averaging opinions across the companies [more details in the appendix].
+Each User has an inclination $I \in \{-1,0,1\}$ whose possible values denote respectively a "bad", "neutral" and "good" averaging opinions across the companies.
 
-Each User has a degree $k$ which is the number of Users to whom he can send messages during the day.
+Each User has a degree k which is the number of Users to whom he can send messages during the day.
 
-Parameter $k$ is generated randomly according to the scale-free distribution with parameter $\gamma$ and is never changed during the simulation; if $\gamma$ is set to zero then the degree distribution is uniform.
+Parameter k is generated randomly according to the scale-free distribution with parameter $\gamma$ and is never changed during the simulation; if $\gamma$ is set to zero then the degree distribution is uniform.
 
 On each day Users advertize their Inclination and Degree by registering to the Directory Facilitatory (DF); the DF is implemented by Jade and could be compared to the "Yellow Pages" phone book.
 Once all the Users have registered to the DF they can make queries in order to look for other Users sharing the same Inclination and then collecting them in a list whose length is equal to their degree. 
