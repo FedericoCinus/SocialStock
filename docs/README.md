@@ -39,13 +39,12 @@ Each time a User receives a message he interacts with the sender.
 
 Let's consider an interacting couple and call the two Users A and B having respectively degree $$k_A$$ and 
 $$k_B$$, the interaction consists in these steps :
-
 	- Opinion comparison: 
 		- B compares its opinion vector $$$\mathbf{v}_B$$ with $$\mathbf{v}_A$$, given the subset of companies on which the two Users' opinion are different, a company's index $$c$$ is extracted according to a uniform distribution. If $$\mathbf{v}_A$$ and $\mathbf{v}_B$ are equal the interaction stops. 
 	- Influence	
 	\begin{itemize}
 		- The opinion on $$c$$-th company remains unchanged for B while A changes it to B's opinion. This event occurs with probability $$k_B/(k_A + k_B)$$.
-		- The opinion on $c$-th company remains unchanged for A while B changes it to A's opinion. This event occurs with probability $$k_A/(k_A + k_B)$$.	 		
+		- The opinion on $$c$$-th company remains unchanged for A while B changes it to A's opinion. This event occurs with probability $$k_A/(k_A + k_B)$$.	 		
 
 ## Analysis
 
