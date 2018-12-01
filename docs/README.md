@@ -63,4 +63,4 @@ We verified that the model complexity is therefore the determinant factor for eq
 [gif2]: img/gif2.gif "gif2"
 [inc]: img/inc.pdf "inc"
 [opi]: img/opi.pdf "opi"
-[article]: https://github.com/FedericoCinus/SocialStock/blob/master/Article.pdf "article"
+## https://github.com/FedericoCinus/SocialStock/blob/master/Article.pdf
