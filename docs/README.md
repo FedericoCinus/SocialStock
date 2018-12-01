@@ -50,7 +50,7 @@ $$k_B$$, the interaction consists in these steps :
 The analysis has 2 objectives:
 
 - Visualization of the network evolution: red -> inclination=-1, green -> inclination=0, blue -> inclination=1
-![gif][gif]
+![gif2][gif2]
 
 - Finding equilibrium time in inclination vs time plot and opinions vs time plot, with following parameters:
 3 companies, 100 users, 20 OpinionRange, scale free network
@@ -60,6 +60,6 @@ The analysis has 2 objectives:
 
 We verified that the model complexity is therefore the determinant factor for equilibrium time in network consensus: as the OpinionRange increases the equilibrium time increases too. We also found that scale free setting has a higher equilibrium time measure with respect to the uniform degree distribution setting. Moreover the standard deviation is dependent both on the OpinionRange and the network model setting. (see the article)
 
-[gif]: img/gif2.gif "gif"
+[gif2]: img/gif2.gif "gif2"
 [inc]: img/inc.pdf "inc"
 [opi]: img/opi.pdf "opi"
