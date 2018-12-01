@@ -1,6 +1,5 @@
 # SocialStock
-[WORK IN PROGRESS]
 
-Multi-Agent System program in JADE: how a social network can influence the stock market.
+Multi-Agent System program in JADE: how consensus is reached in a social network.
 
 More details on https://federicocinus.github.io/SocialStock/
