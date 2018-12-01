@@ -47,8 +47,14 @@ $$k_B$$, the interaction consists in these steps :
 	- The opinion on $$c$$-th company remains unchanged for A while B changes it to A's opinion. This event occurs with probability $$k_A/(k_A + k_B)$$.	 		
 
 ## Analysis
-The analysis has 3 objective
-![gif][gif]
+The analysis has 3 objectives:
 
+- Visualization of the network evolution: red -> inclination=-1, green -> inclination=0, blue -> inclination=1
+![gif][gif]
+- Equilibrium time in inclination vs time plot and opinions vs time plot:
+![inc][inc]
+![opi][opi]
 
 [gif]: img/gif.gif "gif"
+[inc]: img/inc.pdf "inc"
+[opi]: img/opi.pdf "opi"
