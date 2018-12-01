@@ -21,9 +21,9 @@ Download JADE library from http://jade.tilab.com. Clone SocialStock repository f
 
 ## Model
 The initial world's configuration is given by the instantiation of N Users. 
-The Users live in a world with C companies, which are indexed from 0 to C-1, and are provided with a set of opinions, one for each company.
+The Users live in a world with $$C$$ companies, which are indexed from 0 to $$C-1$$, and are provided with a set of opinions, one for each company.
 
-An opinion is a positive integer which ranges from 0 to R-1, let R denote the opinion range. For each User the opinions are stored within a vector $$ bold{v} \in \mathbb{N}^C $$ which we denote as the opinion vector, the entry $  \mathbf{v}_c $ is the opinion on the c-th company.
+An opinion is a positive integer which ranges from 0 to $$ R-1 $$, let $$R$$ denote the opinion range. For each User the opinions are stored within a vector $$ bold{v} \in \mathbb{N}^C $$ which we denote as the opinion vector, the entry $  \mathbf{v}_c $ is the opinion on the c-th company.
 
 Each User has an inclination $I \in \{-1,0,1\}$ whose possible values denote respectively a "bad", "neutral" and "good" averaging opinions across the companies.
 
