@@ -3,33 +3,51 @@
 ## ToC
 - [Overview](#overview)
 - [Run](#run)
-- [Solution](#Solution)
+- [Model](#model)
+- [Analysis](#analysis)
 
 
 ## Overview
 
-SocialStock is a Multi-Agent System program written in JADE (Java).  
+In this work is introduced the consensus problem on network. In particular we use MAS to model the opinion influence between nodes in a social network and study the time necessary to reach consensus. We introduced the possibility to vary the complexity of each node opinion over a set of fields which we call companies.
+Some estimation has been done in order to make the simulation suitable for representing reality and still keep computational costs low. Results show the robustness of the proposed solution both in scale free setting and uniform degree distribution setting.
 
 
 ## Run
 
-Clone SocialStock repository from GitHub. Run MainSocial.
+Download JADE library from http://jade.tilab.com. Clone SocialStock repository from GitHub. Run MainSocial.
 
 
-## Solution
+## Model
+The initial world's configuration is given by the instantiation of $N$ Users. 
+The Users live in a world with $C$ companies, which are indexed from $0$ to $C-1$, and are provided with a set of opinions, one for each company.
 
-Language's sounds are treated as near letters in a word, e.g. in the word "Alfabeto" we have the following "links": (a,l), (l,f), (f,a), et cetera. We convert this idea into a weighted network, where links are as descrbed above and the number of times a link appears is its weght. In this way we can create a network for a general text and plot it converting the links' weights into distances i.e. if two letters are usually closed each other in the text, they will be near in the network plotting. The following plots are for an english text network and an italian text netowrk respectively:
+An opinion is a positive integer which ranges from $0$ to $R-1$, let $R$ denote the opinion range. For each User the opinions are stored within a vector $ \mathbf{v} \in \mathbb{N}^C$ which we denote as the opinion vector, the entry $  \mathbf{v}_c $ is the opinion on the $c$-th company.
 
-![network1][network1]
+Each User has an inclination $I \in \{-1,0,1\}$ whose possible values denote respectively a "bad", "neutral" and "good" averaging opinions across the companies [more details in the appendix].
 
-![network2][network2]
+Each User has a degree $k$ which is the number of Users to whom he can send messages during the day.
 
-Studying the network we can calculate the following quantities: degree distribution, clustering coefficient, assortative coefficient, et cetera. We filter them in order to have only usefull quantities in the aim of discriminating two texts. Then we use them as features of a machine learning algorithm. 
+Parameter $k$ is generated randomly according to the scale-free distribution with parameter $\gamma$ and is never changed during the simulation; if $\gamma$ is set to zero then the degree distribution is uniform.
 
-In particular we generate two groups of artificial texts (ENG, ITA) by taking at random from an english and italian dictionary (respectively) some words. We calculate the usefull network quantities and assign them as features vector, then we add the right language label (ENG/ITA), according to its creation. This is he training set.
+On each day Users advertize their Inclination and Degree by registering to the Directory Facilitatory (DF); the DF is implemented by Jade and could be compared to the "Yellow Pages" phone book.
+Once all the Users have registered to the DF they can make queries in order to look for other Users sharing the same Inclination and then collecting them in a list whose length is equal to their degree. 
+Then communication is accomplished through the exchange of messages to Users contained in the list. The messages are implemented by the JADE class ACLMessage and their respective performative is REQUEST.
+ 
+Each time a User receives a message he interacts with the sender.
 
-Then we use a Naive-Bayes ML model fitting it on the training set (more than 200 texts: half in english and half in italian). The prediction is done in two real english and italian texts giving a correct discrimination.
+Let's consider an interacting couple and call the two Users A and B having respectively degree $k_A$ and 
+$k_B$, the interaction consists in these steps :
+\begin{itemize}
+	\item[1] Opinion comparison
+	\item[] B compares its opinion vector $\mathbf{v}_B$ with $\mathbf{v}_A$, given the subset of companies on which the two Users' opinion are different, a company's index $c$ is extracted according to a uniform distribution. If $\mathbf{v}_A$ and $\mathbf{v}_B$ are equal the interaction stops. 
+	\item[2] Influence	
+	\begin{itemize}
+		\item The opinion on $c$-th company remains unchanged for B while A changes it to B's opinion. This event occurs with probability $k_B/(k_A + k_B)$.
+		\item The opinion on $c$-th company remains unchanged for A while B changes it to A's opinion. This event occurs with probability $k_A/(k_A + k_B)$.	 	
+	\end{itemize} 		
+\end{itemize}
+
+## Analysis
 
 
-[network1]: img/network1.png "English text network with Networkx"
-[network2]: img/network2.png "Italian text network with Networkx"
