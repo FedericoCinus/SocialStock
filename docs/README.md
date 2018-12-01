@@ -49,8 +49,8 @@ $k_B$, the interaction consists in these steps :
 \end{itemize}
 
 ## Analysis
+
 ![gif][gif]
 
 
-![concl][concl]
 [gif]: img/gif.gif "gif"
